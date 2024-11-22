@@ -1,6 +1,8 @@
-import { Root } from '@radix-ui/react-slot';
-import Home from 'pages/home';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Root from './layouts/Root';
+import HomePage from './pages/home';
+import Food from './pages/food';
 
 const router = createBrowserRouter([
   {
@@ -9,7 +11,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <HomePage/>
+      },
+      {
+        path: 'food',
+        element: <Food/>
       }
     ]
   }
