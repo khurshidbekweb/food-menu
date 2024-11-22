@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import { FaChevronLeft } from "react-icons/fa";
+import Language from "../language";
 
 const Navbar = () => {
     return (
@@ -19,12 +20,7 @@ const Navbar = () => {
           <span className="sr-only">Menu</span>
         </Button>
         <div className="w-10 h-10" /> {/* Placeholder for empty icon space */}
-        <Button
-          variant="ghost" 
-          className="text-white hover:bg-white/20 font-medium px-2.5"
-        >
-          RU
-        </Button>
+         <Language/>
       </div>
     </nav>
     );
