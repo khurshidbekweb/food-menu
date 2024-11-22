@@ -1,4 +1,3 @@
-import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import { FaChevronLeft } from "react-icons/fa";
 import Language from "../language";
@@ -21,7 +20,7 @@ const Navbar = () => {
                         <span className="blog p-[6px] px-4 bg-[#8833EE] rounded-md"></span>
                     </Button>
                     <Button variant="ghost" size="icon" className="text-white flex flex-col">
-                        <span className="blog p-4 bg-white/40 rounded-sm"></span>
+                        <span className="blog p-4 bg-white/4a0 rounded-sm"></span>
                     </Button>
                 </div>
                 <Language />
