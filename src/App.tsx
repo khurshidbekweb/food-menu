@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './layouts/Root';
 import HomePage from './pages/home';
 import Food from './pages/food';
+import HomeStatr from './pages/home-statr';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +13,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <HomeStatr/>
+      },
+      {
+        path: '/:restaurentId',
         element: <HomePage/>
       },
       {
@@ -24,9 +30,12 @@ const router = createBrowserRouter([
 
 
 const App = () => {
+  const queryClient = new QueryClient()
   return (
     <div>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />  
+      </QueryClientProvider>
     </div>
   );
 };
