@@ -21,7 +21,7 @@ const RowCard = ({food}:PropsFood) => {
             />
             <div className="flex-1 flex flex-col justify-start items-start">
                     <h3 className="font-semibold text-lg">{JSON.parse(food.name)[language.code]}</h3>
-                    <p className="text-gray-600 font-medium">{food.price} so'm</p>
+                    <p className="text-gray-600 text-[18px] font-medium mt-5">{food.price} so'm</p>
                 {/* <Button variant="outline" className="bg-[#E8FAF9] text-[#1BC5BD] h-[30px] py-2 px-7 rounded-full">
                     +Qo'shish
                 </Button> */}

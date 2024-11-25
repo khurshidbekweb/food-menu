@@ -55,9 +55,14 @@ const FoodPage = () => {
                         </>
                         :
                         <>
-                            <ColCard />
-                            <ColCard />
-                            <ColCard />
+                            {categorys && categorys.map((el:category) => (
+                                <div className="flex flex-col space-y-2" key={el._id} id={el._id}>
+                                    <h2 className="text-[20px] font-bold">{JSON.parse(el.name)[language.code]}</h2>
+                                    {el?.foods.map((food:Food) => (
+                                        <ColCard food={food}/>
+                                    ))}
+                                </div>
+                            ))}
                         </>}
                 </div>
             </div>
