@@ -37,7 +37,7 @@ export interface User{
     createdAt: string;
     updatedAt: string;
     __v: number;
-    // categories: any[];
+    categories: category;
   }
   export interface CategoryIMG {
     _id: string;
@@ -57,11 +57,12 @@ export interface User{
   }
 
   export interface category{
+      map(arg0: (el: category) => import("react/jsx-runtime").JSX.Element): unknown;
     _id: string;
   name: Record<string, string>; // JSON string formatida, Record ishlatildi
   restaurant: string; // Restaurant ID sifatida string formatida
   image: Image; // Ichki obyekt uchun `Image` interfeysi
-  foods: any[]; // Foods bo'sh massiv, shuning uchun `any[]` qilingan (yoki ma'lum bo'lsa interfeys berilishi mumkin)
+  foods: Food[]; // Foods bo'sh massiv, shuning uchun `any[]` qilingan (yoki ma'lum bo'lsa interfeys berilishi mumkin)
   createdAt: string;
   updatedAt: string;
   __v: number;

@@ -3,17 +3,20 @@ import HomeNav from '@/components/navbar/home-nav';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { IMG_BASE_URL } from '@/constants';
-import { useCategoryAll } from '@/querys';
-import { category } from '@/types';
+import { useCategoryAll, useRestuarantOne } from '@/querys';
+import { useStore } from '@/store';
+import { category, Restaurant } from '@/types';
 import { ChevronRight, } from 'lucide-react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const HomePage = () => {
   const {restaurentId} = useParams()
-  console.log(restaurentId);  
+  const restaurant:Restaurant = useRestuarantOne(restaurentId)?.data
+  localStorage.setItem('restaurant', JSON.stringify(restaurant))
+  const {language} = useStore()
   const menuCategories:category[] = useCategoryAll(restaurentId)?.data
-  console.log(menuCategories);
+  const navigate = useNavigate()  
   
     return (
         <div className="flex flex-col h-screen max-w-md mx-auto bg-white">
@@ -38,9 +41,10 @@ const HomePage = () => {
               key={category._id}
               variant="ghost"
               className="w-full justify-start h-auto py-4 px-6"
+              onClick={()=>navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)}
             >
               <span className="mr-4 text-xl"><img className='w-[30px] h-[30px] rounded-full' src={`${IMG_BASE_URL}${category.image.image}`} alt="" /></span>
-              <span className="flex-1 text-left">{JSON.parse(category.name)['en']}</span>
+              <span className="flex-1 text-left">{JSON.parse(category.name)[language.code]}</span>
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
             </Button>
           ))}
