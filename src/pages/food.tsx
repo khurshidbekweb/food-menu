@@ -6,7 +6,7 @@ import { useCategoryAll } from "@/querys";
 import { useStore } from "@/store";
 import { category, Food, Restaurant } from "@/types";
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const FoodPage = () => {
     const { viewCard } = useStore()
@@ -18,12 +18,14 @@ const FoodPage = () => {
     const categoryId = queryParams.get("categoryId");
     const categoryAll = useCategoryAll(restaurentId)?.data
     const {language} = useStore()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (categoryId) {
             const element = document.getElementById(categoryId);
             if (element) {
-                element.scrollIntoView({ behavior: "smooth"});
+                const offset = element.getBoundingClientRect().top + window.pageYOffset - 110;
+                window.scrollTo({top: offset, behavior: "smooth"});
             }
         }
     }, [categoryId]);
@@ -34,7 +36,7 @@ const FoodPage = () => {
             <div className="px-2 md:px-5 mt-2">
                 <div className="catgory flex items-center gap-x-3 my-2 top-16 fixed">
                     {categoryAll?.length && categoryAll?.map((el:category) => (
-                        <Badge variant={"outline"} className="bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px]" key={el._id}>
+                        <Badge onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${el._id}`)} variant={"outline"} className={`bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px] ${categoryId==el._id?'bg-[#8833EE] text-white':''}`}>
                             {JSON.parse(el.name)[language.code]}                            
                         </Badge>
                     ))}
