@@ -3,13 +3,13 @@ import { FaChevronLeft } from "react-icons/fa";
 import Language from "../language";
 import { useStore } from "@/store";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
     const {changeCardView, viewCard} = useStore()
     const {restaurentId} = useParams()
     const navigate = useNavigate()
-    
-    console.log(viewCard);
+    const {t} = useTranslation()
     
     return (
         <nav className="flex items-center max-w-md justify-between px-4 py-3 bg-[#8833EE] text-white fixed w-full top-0 left-0 right-0 mx-auto h-[65px] ">
@@ -18,7 +18,7 @@ const Navbar = () => {
                     <FaChevronLeft size={25} className="text-white" />
                     <span className="sr-only">Back</span>
                 </Button>
-                <span className="text-2xl font-medium">Menyu</span>
+                <span className="text-2xl font-medium">{t('menu')}</span>
             </div>
 
             <div className="flex items-center gap-4">
