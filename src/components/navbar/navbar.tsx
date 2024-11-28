@@ -12,7 +12,7 @@ const Navbar = () => {
     console.log(viewCard);
     
     return (
-        <nav className="flex items-center justify-between px-4 py-3 bg-[#8833EE] text-white fixed w-full top-0 h-[65px]">
+        <nav className="flex items-center max-w-md justify-between px-4 py-3 bg-[#8833EE] text-white fixed w-full top-0 left-0 right-0 mx-auto h-[65px] ">
             <div className="flex items-center gap-3">
                 <Button onClick={() => navigate(`/${restaurentId}`)} variant="ghost" size="icon" className="text-white border hover:bg-white/20">
                     <FaChevronLeft size={25} className="text-white" />

@@ -20,7 +20,7 @@ interface StoreProviderProps {
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
   const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant'))
   const [direction, setDirection] = useState<ViewCard>("row");
-  const [language, setLanguage] = useState<Language>(restaurant.languages[0])
+  const [language, setLanguage] = useState<Language>(restaurant?.languages[0])
 
   const changeDirection = (card: ViewCard) => {
     setDirection(card);

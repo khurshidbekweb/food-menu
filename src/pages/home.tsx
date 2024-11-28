@@ -11,17 +11,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 const HomePage = () => {
-  const {restaurentId} = useParams()
-  const restaurant:Restaurant = useRestuarantOne(restaurentId)?.data
+  const { restaurentId } = useParams()
+  const restaurant: Restaurant = useRestuarantOne(restaurentId as string)?.data
   localStorage.setItem('restaurant', JSON.stringify(restaurant))
-  const {language} = useStore()
-  const menuCategories:category[] = useCategoryAll(restaurentId)?.data
-  const navigate = useNavigate()  
-  
-    return (
-        <div className="flex flex-col h-screen max-w-md mx-auto bg-white">
+  const { language } = useStore()
+  const menuCategories: category[] = useCategoryAll(restaurentId!)?.data
+  const navigate = useNavigate()
+
+  return (
+    <div className="flex flex-col border h-screen max-w-md mx-auto bg-white">
       {/* Header */}
-      <HomeNav/>
+      <HomeNav />
 
       {/* Online menu header */}
       <div className="border-b p-4">
@@ -36,12 +36,12 @@ const HomePage = () => {
       {/* Menu categories */}
       <ScrollArea className="flex-1">
         <div className="divide-y">
-          {menuCategories?.map((category:category) => (
+          {menuCategories?.map((category: category) => (
             <Button
               key={category._id}
               variant="ghost"
               className="w-full justify-start h-auto py-4 px-6"
-              onClick={()=>navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)}
+              onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)}
             >
               <span className="mr-4 text-xl"><img className='w-[30px] h-[30px] rounded-full' src={`${IMG_BASE_URL}${category.image.image}`} alt="" /></span>
               <span className="flex-1 text-left">{JSON.parse(category.name)[language.code]}</span>
@@ -52,9 +52,9 @@ const HomePage = () => {
       </ScrollArea>
 
       {/* Bottom navigation */}
-        <MiniNav/>
+      <MiniNav />
     </div>
-    );
+  );
 };
 
 export default HomePage;

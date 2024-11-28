@@ -31,9 +31,8 @@ const FoodPage = () => {
     }, [categoryId]);
     
     return (
-        <>
+        <div className="px-2 max-w-md mx-auto md:px-5 mt-2 border">
             <Navbar />
-            <div className="px-2 md:px-5 mt-2">
                 <div className="catgory flex items-center gap-x-3 my-2 top-16 fixed">
                     {categoryAll?.length && categoryAll?.map((el:category) => (
                         <Badge onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${el._id}`)} variant={"outline"} className={`bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px] ${categoryId==el._id?'bg-[#8833EE] text-white':''}`}>
@@ -66,7 +65,6 @@ const FoodPage = () => {
                         </>}
                 </div>
             </div>
-        </>
     );
 };
 
