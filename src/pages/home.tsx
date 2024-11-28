@@ -12,9 +12,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const HomePage = () => {
   const { restaurentId } = useParams()
-  const restaurant: Restaurant = useRestuarantOne(restaurentId as string)?.data
-  localStorage.setItem('restaurant', JSON.stringify(restaurant))
   const { language } = useStore()
+  const restaurant: Restaurant = useRestuarantOne(restaurentId!)?.data
+  console.log(restaurant);
+  
+  if(restaurant){
+    localStorage.setItem('restaurant', JSON.stringify(restaurant))
+  }
   const menuCategories: category[] = useCategoryAll(restaurentId!)?.data
   const navigate = useNavigate()
 
