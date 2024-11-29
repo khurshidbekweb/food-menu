@@ -18,7 +18,7 @@ interface StoreProviderProps {
   children: ReactNode; // Bolalar elementlari
 }
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
-  const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant'))
+  const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
   const [direction, setDirection] = useState<ViewCard>("row");
   const [language, setLanguage] = useState<Language>(restaurant?.languages[0])
 
