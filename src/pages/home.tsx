@@ -1,4 +1,4 @@
-import MiniNav from '@/components/mini-nav';
+import Loading from '@/components/loader';
 import HomeNav from '@/components/navbar/home-nav';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -8,12 +8,14 @@ import { useStore } from '@/store';
 import { category } from '@/types';
 import { ChevronRight, } from 'lucide-react'
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
 const HomePage = () => {
   const { restaurentId } = useParams()
   const { language } = useStore()
+  const {t} = useTranslation()
   const { data: restaurant, error, isLoading } = useRestuarantOne(restaurentId!);
   const { data: menuCategories } = useCategoryAll(restaurentId!);
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const HomePage = () => {
   
   console.log(restaurant);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
   
   if (error) {
@@ -40,9 +42,9 @@ const HomePage = () => {
       {/* Online menu header */}
       <div className="border-b p-4">
         <div className="flex items-center justify-between">
-          <span className="text-muted-foreground">Online menu</span>
-          <Button variant="outline" size="sm">
-            Все блюда
+          <span className="text-muted-foreground font-bold text-xl">{t("kategory")}</span>
+          <Button onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${restaurant?.categories[0]?._id}`)} variant="outline" size="sm">
+            {t("kategory_btn")}
           </Button>
         </div>
       </div>
@@ -66,7 +68,7 @@ const HomePage = () => {
       </ScrollArea>
 
       {/* Bottom navigation */}
-      <MiniNav />
+      {/* <MiniNav /> */}
     </div>
   );
 };

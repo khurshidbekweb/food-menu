@@ -1,3 +1,5 @@
 {
-    "menu":"Menu"
+    "menu":"Menu",
+    "kategory": "Categories",
+    "kategory_btn": "All dishes"
 }

@@ -31,20 +31,20 @@ const FoodPage = () => {
     }, [categoryId]);
     
     return (
-        <div className="px-2 max-w-md mx-auto md:px-5 mt-2 border">
+        <div className=" max-w-md mx-auto md:px-5 mt-2 border overflow-hidden">
             <Navbar />
-                <div className="catgory flex items-center gap-x-3 my-2 top-16 fixed">
+                <div className="category-badge flex items-center max-w-md px-[4px] overflow-x-scroll gap-x-3 my-2 top-16 fixed">
                     {categoryAll?.length && categoryAll?.map((el:category) => (
-                        <Badge onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${el._id}`)} variant={"outline"} className={`bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px] ${categoryId==el._id?'bg-[#8833EE] text-white':''}`}>
+                        <Badge key={el._id} onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${el._id}`)} variant={"outline"} className={`bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px] ${categoryId==el._id?'bg-[#8833EE] text-white':''}`}>
                             {el.name[language?.code]}                            
                         </Badge>
                     ))}
                 </div>
-                <div className="flex flex-col space-y-2 mt-[100px]">
+                <div className="px-2 flex flex-col space-y-2 mt-[100px]">
                     {viewCard == 'row' ?
                         <>
                             {categorys && categorys.map((el:category) => (
-                                <div className="flex flex-col space-y-2" key={el._id} id={el._id}>
+                                <div key={el._id}  className="flex flex-col space-y-2" id={el._id}>
                                     <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
                                     {el?.foods.map((food:Food) => (
                                         <RowCard food={food}/>

@@ -120,3 +120,6 @@
 body::-webkit-scrollbar{
   display: none;  
 }
+.category-badge::-webkit-scrollbar{
+  display: none;
+}

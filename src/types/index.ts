@@ -37,7 +37,7 @@ export interface User{
     createdAt: string;
     updatedAt: string;
     __v: number;
-    categories: category;
+    categories: category[];
   }
   export interface CategoryIMG {
     _id: string;
