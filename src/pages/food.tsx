@@ -2,6 +2,7 @@ import ColCard from "@/components/card/col-card";
 import RowCard from "@/components/card/row-card";
 import Navbar from "@/components/navbar/navbar";
 import { Badge } from "@/components/ui/badge";
+import { IMG_BASE_URL } from "@/constants";
 import { useCategoryAll } from "@/querys";
 import { useStore } from "@/store";
 import { category, Food, Restaurant } from "@/types";
@@ -45,7 +46,10 @@ const FoodPage = () => {
                         <>
                             {categorys && categorys.map((el:category) => (
                                 <div key={el._id}  className="flex flex-col space-y-2" id={el._id}>
+                                    <div className="">
+                                    <img src={`${IMG_BASE_URL}${el.image}`} alt="" />
                                     <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
+                                    </div>
                                     {el?.foods.map((food:Food) => (
                                         <RowCard food={food}/>
                                     ))}
