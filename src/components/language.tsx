@@ -20,7 +20,7 @@ const LanguageComponent = () => {
     }
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${language.image}`} alt="" /></DropdownMenuTrigger>
+            <DropdownMenuTrigger><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${language?.image}`} alt="" /></DropdownMenuTrigger>
             <DropdownMenuContent>
                 {languages?.length && languages.map((lang) => (
                         <DropdownMenuItem className="cursor-pointer" key={lang._id} onClick={() => handelChangeLanguage(lang)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${lang.image}`} alt="language image" /> {lang.name}</DropdownMenuItem>

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Language, Restaurant } from "@/types";
 import React, { createContext, ReactNode, useState, useContext } from "react";
 
@@ -36,7 +37,6 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useStore = () => {
   const context = useContext(StoreContext);
   if (!context) {
