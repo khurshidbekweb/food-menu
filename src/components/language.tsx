@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 const LanguageComponent = () => {
     const {language, changeLanguage} = useStore()
     const {i18n} = useTranslation()
-    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant'))
+    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
     const languages:Language[] = restaurant?.languages
     const handelChangeLanguage = (lang: Language) => {
         changeLanguage(lang)

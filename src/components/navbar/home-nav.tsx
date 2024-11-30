@@ -5,7 +5,7 @@ import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 
 const HomeNav = () => {
-  const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant'))
+  const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
   const {language} = useStore()
     return (
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-4 text-white">

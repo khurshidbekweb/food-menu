@@ -12,11 +12,11 @@ const FoodPage = () => {
     const { viewCard } = useStore()
     const location = useLocation();
     const {restaurentId} = useParams()
-    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant'))
+    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
     const categorys = restaurant?.categories
     const queryParams = new URLSearchParams(location.search);
     const categoryId = queryParams.get("categoryId");
-    const categoryAll = useCategoryAll(restaurentId)?.data
+    const categoryAll = useCategoryAll(restaurentId!)?.data
     const {language} = useStore()
     const navigate = useNavigate()
 
@@ -36,7 +36,7 @@ const FoodPage = () => {
                 <div className="catgory flex items-center gap-x-3 my-2 top-16 fixed">
                     {categoryAll?.length && categoryAll?.map((el:category) => (
                         <Badge onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${el._id}`)} variant={"outline"} className={`bg-white text-black border border-[#8833EE] cursor-pointer px-3 text-[15px] ${categoryId==el._id?'bg-[#8833EE] text-white':''}`}>
-                            {JSON.parse(el.name)[language.code]}                            
+                            {el.name[language.code]}                            
                         </Badge>
                     ))}
                 </div>
@@ -45,7 +45,7 @@ const FoodPage = () => {
                         <>
                             {categorys && categorys.map((el:category) => (
                                 <div className="flex flex-col space-y-2" key={el._id} id={el._id}>
-                                    <h2 className="text-[20px] font-bold">{JSON.parse(el.name)[language.code]}</h2>
+                                    <h2 className="text-[20px] font-bold">{el.name[language.code]}</h2>
                                     {el?.foods.map((food:Food) => (
                                         <RowCard food={food}/>
                                     ))}
@@ -56,7 +56,7 @@ const FoodPage = () => {
                         <>
                             {categorys && categorys.map((el:category) => (
                                 <div className="flex flex-col space-y-2" key={el._id} id={el._id}>
-                                    <h2 className="text-[20px] font-bold">{JSON.parse(el.name)[language.code]}</h2>
+                                    <h2 className="text-[20px] font-bold">{el.name[language.code]}</h2>
                                     {el?.foods.map((food:Food) => (
                                         <ColCard food={food}/>
                                     ))}
