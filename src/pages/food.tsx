@@ -31,7 +31,7 @@ const FoodPage = () => {
     }, [categoryId]);
     
     return (
-        <div className=" max-w-md mx-auto md:px-5 mt-2 border overflow-hidden">
+        <div className="max-w-md mx-auto md:px-5 mt-2 border overflow-hidden lg:overflow-hidden">
             <Navbar />
                 <div className="category-badge flex items-center max-w-md px-[4px] overflow-x-scroll gap-x-3 my-2 top-16 fixed">
                     {categoryAll?.length && categoryAll?.map((el:category) => (
