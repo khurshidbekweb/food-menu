@@ -16,7 +16,11 @@ const FoodPage = () => {
     const categorys = restaurant?.categories
     const queryParams = new URLSearchParams(location.search);
     const categoryId = queryParams.get("categoryId");
+<<<<<<< HEAD
     const categoryAll = useCategoryAll(restaurentId!)?.data
+=======
+    const categoryAll = useCategoryAll(restaurentId as string)?.data
+>>>>>>> 08800596b27c260f02f71cfa34fef077647ac40c
     const {language} = useStore()
     const navigate = useNavigate()
 

@@ -15,9 +15,9 @@ const HomeNav = () => {
           </Button>
           <div className="flex items-center gap-2">
             <div className="bg-zinc-900 rounded-full h-8 w-8 flex items-center justify-center">
-              <img className="w-[35px] h-[35px] rounded-full object-cover" src={`${IMG_BASE_URL}${restaurant.image}`} alt="restaurant img" />
+              <img className="w-[35px] h-[35px] rounded-full object-cover" src={`${IMG_BASE_URL}${restaurant?.image}`} alt="restaurant img" />
             </div>
-            <span className="font-semibold">{JSON.parse(restaurant.name)[language.code]} Cafe</span>
+            <span className="font-semibold">{restaurant?.name[language.code]} Cafe</span>
           </div>
           <div className="flex items-center gap-1">
             <span className="text-sm">⭐ 5.0</span>
