@@ -24,8 +24,6 @@ const HomePage = () => {
       localStorage.setItem('restaurant', JSON.stringify(restaurant));
     }
   }, [restaurant]);
-  
-  console.log(restaurant);
   if (isLoading) {
     return <Loading/>
   }

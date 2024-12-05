@@ -4,12 +4,16 @@ import { Restaurant } from "@/types";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 import LanguageComponent from "../language";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useRestuarantOne } from "@/querys";
 
 const HomeNav = () => {
-  const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
+  const {restaurentId} = useParams()
   const navigate = useNavigate()
+  const restaurant:Restaurant = useRestuarantOne(restaurentId as string)?.data
   const {language} = useStore()
+  console.log(restaurant);
+  
     return (
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-4 text-white">
         <div className="flex items-center justify-between">

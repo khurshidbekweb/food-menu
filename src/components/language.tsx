@@ -8,12 +8,20 @@ import {
 import { IMG_BASE_URL } from "@/constants";
 import { Language, Restaurant } from "@/types";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import { useRestuarantOne } from "@/querys";
+import { useEffect } from "react";
 
 const LanguageComponent = () => {
+    const {restaurentId}= useParams()
     const {language, changeLanguage} = useStore()
     const {i18n} = useTranslation()
-    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurant') as string)
-    const languages:Language[] = restaurant?.languages
+    const restaurant:Restaurant = useRestuarantOne(restaurentId as string)?.data
+    useEffect(() => {
+        if(restaurant?.languages?.length)
+        changeLanguage(restaurant.languages[0])
+    }, [restaurant, changeLanguage])
+    const languages:Language[] = restaurant?.languages || []
     const handelChangeLanguage = (lang: Language) => {
         changeLanguage(lang)
         i18n.changeLanguage(lang.code)
