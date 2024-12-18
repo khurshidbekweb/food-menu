@@ -6,7 +6,6 @@ import { IMG_BASE_URL } from '@/constants';
 import { useCategoryAll, useRestuarantOne } from '@/querys';
 import { useStore } from '@/store';
 import { category } from '@/types';
-import { ChevronRight, } from 'lucide-react'
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -49,17 +48,17 @@ const HomePage = () => {
 
       {/* Menu categories */}
       <ScrollArea className="flex-1">
-        <div className="divide-y">
+        <div className="">
           {menuCategories?.map((category: category) => (
             <Button
               key={category._id}
               variant="ghost"
-              className="w-full justify-start h-auto py-4 px-6"
+              className="w-full flex justify-center items-center h-auto py-4 px-6 relative"
               onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)}
             >
-              <span className="mr-4 text-xl"><img className='w-[30px] h-[30px] rounded-full' src={`${IMG_BASE_URL}${category.image.image}`} alt="" /></span>
-              <span className="flex-1 text-left">{category.name[language?.code]}</span>
-              <ChevronRight className="h-5 w-5 text-muted-foreground" />
+              <img className='w-full h-[120px] rounded-full object-cover' src={`${IMG_BASE_URL}${category.image.image}`} alt="" />
+              <span className="absolute text-3xl font-bold text-white left-auto">{category.name[language?.code]}</span>
+              {/* <ChevronRight className="h-5 w-5 text-muted-foreground" /> */}
             </Button>
           ))}
         </div>
