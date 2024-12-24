@@ -17,7 +17,6 @@ const HomePage = () => {
   const {t} = useTranslation()
   const { data: restaurant, error, isLoading } = useRestuarantOne(restaurentId!);
   const { data: menuCategories } = useCategoryAll(restaurentId!);
-  console.log(menuCategories);
   
   const navigate = useNavigate();
   useEffect(() => {

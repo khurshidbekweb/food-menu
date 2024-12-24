@@ -14,8 +14,8 @@ i18n.use(initReactI18next).init({
     en: { translation: translationEN },
     tr: { translation: translationTR },
   },
-  lng: JSON.parse(localStorage.getItem('restaurant')!)[0]?.code || 'uz', // Default til
-  fallbackLng: JSON.parse(localStorage.getItem('language')!)?.code || 'uz',
+  lng: JSON.parse(localStorage.getItem('restaurant')!)?.languages[0]?.code || 'uz',
+  fallbackLng: JSON.parse(localStorage.getItem('restaurant')!)?.languages[0]?.code || 'uz',
   interpolation: {
     escapeValue: false,
   },

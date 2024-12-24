@@ -18,10 +18,10 @@ const LanguageComponent = () => {
     const {i18n} = useTranslation()
     const restaurant:Restaurant = useRestuarantOne(restaurentId as string)?.data
     useEffect(() => {
-        if(restaurant?.languages?.length)
+        if(!restaurant?.languages?.length)
         changeLanguage(restaurant.languages[0])
     }, [restaurant, changeLanguage])
-    const languages:Language[] = restaurant?.languages || []
+    const languages:Language[] = restaurant?.languages
     const handelChangeLanguage = (lang: Language) => {
         changeLanguage(lang)
         i18n.changeLanguage(lang?.code)
