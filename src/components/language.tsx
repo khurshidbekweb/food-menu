@@ -24,7 +24,7 @@ const LanguageComponent = () => {
     const languages:Language[] = restaurant?.languages || []
     const handelChangeLanguage = (lang: Language) => {
         changeLanguage(lang)
-        i18n.changeLanguage(lang.code)
+        i18n.changeLanguage(lang?.code)
     }
     return (
         <DropdownMenu>

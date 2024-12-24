@@ -46,9 +46,9 @@ const FoodPage = () => {
                         <>
                             {categorys && categorys.map((el:category) => (
                                 <div key={el._id}  className="flex flex-col space-y-2" id={el._id}>
-                                    <div className="">
-                                    <img src={`${IMG_BASE_URL}${el.image}`} alt="" />
-                                    <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
+                                    <div className="flex items-center gap-x-2">
+                                        <img className="w-[35px] h-[35px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="" />
+                                        <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
                                     </div>
                                     {el?.foods.map((food:Food) => (
                                         <RowCard food={food}/>
@@ -60,7 +60,10 @@ const FoodPage = () => {
                         <>
                             {categorys && categorys.map((el:category) => (
                                 <div className="flex flex-col space-y-2" key={el._id} id={el._id}>
-                                    <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
+                                    <div className="flex items-center gap-x-2">
+                                        <img className="w-[35px] h-[35px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="" />
+                                        <h2 className="text-[20px] font-bold">{el.name[language?.code]}</h2>
+                                    </div>
                                     {el?.foods.map((food:Food) => (
                                         <ColCard food={food}/>
                                     ))}

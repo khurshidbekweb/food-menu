@@ -17,6 +17,8 @@ const HomePage = () => {
   const {t} = useTranslation()
   const { data: restaurant, error, isLoading } = useRestuarantOne(restaurentId!);
   const { data: menuCategories } = useCategoryAll(restaurentId!);
+  console.log(menuCategories);
+  
   const navigate = useNavigate();
   useEffect(() => {
     if (restaurant) {
@@ -56,7 +58,7 @@ const HomePage = () => {
               className="w-full flex justify-center items-center h-auto py-4 px-6 relative"
               onClick={() => navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)}
             >
-              <img className='w-full h-[120px] rounded-full object-cover' src={`${IMG_BASE_URL}${category.image.image}`} alt="" />
+              <img className='w-full h-[120px] rounded-full object-cover' src={`${IMG_BASE_URL}${category.image}`} alt="" />
               <span className="absolute text-3xl font-bold text-white left-auto">{category.name[language?.code]}</span>
               {/* <ChevronRight className="h-5 w-5 text-muted-foreground" /> */}
             </Button>

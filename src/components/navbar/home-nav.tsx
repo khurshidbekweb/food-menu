@@ -12,7 +12,6 @@ const HomeNav = () => {
   const navigate = useNavigate()
   const restaurant:Restaurant = useRestuarantOne(restaurentId as string)?.data
   const {language} = useStore()
-  console.log(restaurant);
   
     return (
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-4 text-white">
